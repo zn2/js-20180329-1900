@@ -7,16 +7,30 @@ export default class PhonesCatalogue {
 
     this._render();
 
+    this._element.addEventListener('click', this._onPhoneClick)
+  }
+
+  _onPhoneClick(event) {
+    let phoneElement = event.target.closest('[data-element="phone"]');
+
+    if (!phoneElement) {
+      return;
+    }
+
+    alert(phoneElement.dataset.phoneId);
   }
 
   _render() {
     this._element.innerHTML = `
       <ul class="phones">
       
-        ${ 
+        ${
           this._phones
             .map((phone) => `
-              <li class="thumbnail">
+              <li class="thumbnail"
+                  data-element="phone"
+                  data-phone-id="${ phone.id }">
+                  
                 <a href="#!/phones/${ phone.id }"
                    class="thumb">
                   <img alt="${ phone.name }"
