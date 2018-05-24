@@ -10,8 +10,20 @@ const PhonesService = {
     xhr.send();
 
     xhr.onload = () => {
-      console.log(xhr.status, xhr.responseText);
+      let data = JSON.parse(xhr.responseText);
 
+      callback(data);
+    };
+  },
+
+  loadPhone(phoneId, callback) {
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET', `/api/phones/${ phoneId }`, true);
+
+    xhr.send();
+
+    xhr.onload = () => {
       let data = JSON.parse(xhr.responseText);
 
       callback(data);
