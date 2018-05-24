@@ -22,12 +22,21 @@ export default class PhonesPage {
       let phoneId = event.detail;
 
       console.log(phoneId);
+
+      this._viewer.show();
+      this._catalogue.hide();
     });
 
 
     this._viewer = new PhoneViewer({
       element: this._element.querySelector('[data-component="phone-viewer"]'),
     });
+
+    this._viewer.on('back', () => {
+      this._viewer.hide();
+      this._catalogue.show();
+    });
+
 
     this._shoppingCart = new ShoppingCart({
       element: this._element.querySelector('[data-component="shopping-cart"]'),
