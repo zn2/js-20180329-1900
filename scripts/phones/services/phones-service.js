@@ -1,6 +1,5 @@
 'use strict';
 
-
 const PhonesService = {
   loadPhones(callback) {
     this._sendRequest('/api/phones', callback);
