@@ -21,10 +21,14 @@ export default class PhonesPage {
     this._catalogue.on('phoneSelected', (event) => {
       let phoneId = event.detail;
 
-      console.log(phoneId);
-
       this._viewer.show();
       this._catalogue.hide();
+    });
+
+    this._catalogue.on('add', (event) => {
+      let phoneId = event.detail;
+
+      this._shoppingCart.addItem(phoneId);
     });
 
 
