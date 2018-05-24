@@ -32,6 +32,8 @@ export default class PhonesCatalogue {
 
   _render() {
     this._element.innerHTML = `
+      <h2>Catalogue</h2>
+
       <ul class="phones">
       
         ${
@@ -46,6 +48,10 @@ export default class PhonesCatalogue {
                   <img alt="${ phone.name }"
                        src="${ phone.imageUrl }">
                 </a>
+                
+                <div class="phones__btn-buy-wrapper">
+                  <a class="btn btn-success">Add</a>
+                </div>
                 
                 <a href="#!/phones/${ phone.id }">
                   ${ phone.name }
