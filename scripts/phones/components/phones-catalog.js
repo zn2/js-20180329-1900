@@ -3,14 +3,19 @@
 import Component from '../../component.js';
 
 export default class PhonesCatalogue extends Component{
-  constructor({ element, phones }) {
+  constructor({ element }) {
     super({ element });
 
-    this._phones = phones;
-
+    this._phones = [];
     this._render();
+
     this._element.addEventListener('click', this._onDetailsTriggerClick.bind(this));
     this._element.addEventListener('click', this._onAddButtonClick.bind(this));
+  }
+
+  setPhones(phones) {
+    this._phones = phones;
+    this._render();
   }
 
   _onDetailsTriggerClick(event) {

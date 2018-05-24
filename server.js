@@ -10,7 +10,15 @@ var file = new static.Server('.', {
 });
 
 function accept(req, res) {
-  file.serve(req, res);
+  if (req.url.startsWith('/api')) {
+    req.url += '.json';
+
+    setTimeout(() => {
+      file.serve(req, res);
+    }, 5000);
+  } else {
+    file.serve(req, res);
+  }
 }
 
 http.createServer(accept).listen(3000);
